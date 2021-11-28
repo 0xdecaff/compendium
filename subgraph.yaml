@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -18,9 +18,9 @@ dataSources:
       abis:
         - name: ContractCompendium
           file: ./abis/ContractCompendium.json
-      eventHandlers:
-        - event: Record(indexed string,indexed string)
+      callHandlers:
+        - function: record(string,string)
           handler: handleRecord
-        - event: Revoke(indexed string)
+        - function: revoke(string)
           handler: handleRevoke
       file: ./src/mapping.ts
