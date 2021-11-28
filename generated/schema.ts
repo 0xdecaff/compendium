@@ -16,6 +16,7 @@ export class Record extends Entity {
     super();
     this.set("id", Value.fromString(id));
 
+    this.set("created", Value.fromBigInt(BigInt.zero()));
     this.set("topic", Value.fromString(""));
     this.set("content", Value.fromString(""));
   }
@@ -46,6 +47,15 @@ export class Record extends Entity {
     this.set("id", Value.fromString(value));
   }
 
+  get created(): BigInt {
+    let value = this.get("created");
+    return value!.toBigInt();
+  }
+
+  set created(value: BigInt) {
+    this.set("created", Value.fromBigInt(value));
+  }
+
   get topic(): string {
     let value = this.get("topic");
     return value!.toString();
@@ -70,6 +80,7 @@ export class Revoke extends Entity {
     super();
     this.set("id", Value.fromString(id));
 
+    this.set("created", Value.fromBigInt(BigInt.zero()));
     this.set("topic", Value.fromString(""));
   }
 
@@ -97,6 +108,15 @@ export class Revoke extends Entity {
 
   set id(value: string) {
     this.set("id", Value.fromString(value));
+  }
+
+  get created(): BigInt {
+    let value = this.get("created");
+    return value!.toBigInt();
+  }
+
+  set created(value: BigInt) {
+    this.set("created", Value.fromBigInt(value));
   }
 
   get topic(): string {
