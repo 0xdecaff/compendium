@@ -1,0 +1,26 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: ContractCompendium
+    network: mainnet
+    source:
+      address: "0x71D49113AC36E3F63fE239fbca4DF2cBa748708A"
+      abi: ContractCompendium
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Record
+        - Revoke
+      abis:
+        - name: ContractCompendium
+          file: ./abis/ContractCompendium.json
+      eventHandlers:
+        - event: Record(indexed string,indexed string)
+          handler: handleRecord
+        - event: Revoke(indexed string)
+          handler: handleRevoke
+      file: ./src/mapping.ts
